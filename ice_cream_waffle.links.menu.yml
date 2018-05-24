@@ -1,0 +1,4 @@
+IceCreamWaffleSettingsForm.admin:
+  title: 'Bestelling threshold instellingen'
+  parent: system.admin_config_ui
+  route_name: ice_cream_waffle.admin.settings
