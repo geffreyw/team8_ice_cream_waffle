@@ -1,0 +1,6 @@
+name: Ice Cream Waffle
+description: 'Ijsjes en wafels bestellen'
+package: Thomas More
+
+type: module
+core: 8.x

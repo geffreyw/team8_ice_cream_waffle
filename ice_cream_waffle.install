@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @return mixed
+ */
+function ice_cream_waffle_schema() {
+  $schema['ice_cream_waffle_orders'] = [
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+
+      'keuze' => [
+        'description' => 'De keuze van de gebruiker.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ],
+      'topping' => [
+        'description' => 'Alle gekozen toppings gescheiden door een ,',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => FALSE,
+      ],
+      'smaak' => [
+        'description' => 'De smaak van een ijsje',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => FALSE,
+      ],
+
+      'status' => [
+        'description' => 'De status van de bestelling.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => FALSE,
+        'default' => NULL,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * @param $sandbox
+ */
+function ice_cream_waffle_update_8004(&$sandbox){
+  $table = ice_cream_waffle_schema();
+  \Drupal::database()->schema()->createTable('ice_cream_waffle_orders', $table['ice_cream_waffle_orders']);
+}

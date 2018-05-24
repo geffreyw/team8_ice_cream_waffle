@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function ice_cream_waffle_theme() {
+  return [
+    'ice_cream_waffle' => [
+      'variables' => [
+        'threshold_ice_cream' => NULL,
+        'threshold_waffle' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function ice_cream_waffle_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+  switch ($key) {
+    case 'node_insert':
+      $message['from'] = 'techduino98@gmail.com';
+      $message['subject'] = t('Your mail subject Here: @title', array('@title' => $params['title']), $options);
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
