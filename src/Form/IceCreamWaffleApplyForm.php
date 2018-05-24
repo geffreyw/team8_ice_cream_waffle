@@ -123,7 +123,7 @@ class IceCreamWaffleApplyForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     if ($form_state->getValue('keuze') == 'ice_cream') {
-      if ($this->getWeather() > 20) {
+      if ($this->getWeather() > 30) {
         $this->database->insert('ice_cream_waffle_orders')
           ->fields([
             'keuze' => $form_state->getValue('keuze'),
